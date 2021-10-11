@@ -6,11 +6,19 @@ import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import { RenderArray } from './pages/render_array';
+import { DataTableExample } from './pages/datatable_example';
+import { MockServer } from './service/mockServer';
+const environment = process.env.NODE_ENV
+
+if(environment !== 'production')
+{
+  MockServer({environment})
+}
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <RenderArray />
+      <DataTableExample />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
